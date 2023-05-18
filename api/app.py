@@ -10,15 +10,11 @@ import api.config as config
 
 app = Flask(__name__)
 
-mongo_client = MongoClient(config.MONGO_URL)
-user_repository = MongoUserRepository(mongo_client)
-game_repository = MongoGameRepository(mongo_client)
+DB_FILE = "db.json"
 
-#DB_FILE = "db.json"
-
-#db = JsonDatabase(DB_FILE)
-#user_repository = JsonUserRepository(db)
-#game_repository = JsonGameRepository(db)
+db = JsonDatabase(DB_FILE)
+user_repository = JsonUserRepository(db)
+game_repository = JsonGameRepository(db)
 
 
 token_generator = TokenGenerator(issuer_uri=config.TOKEN_ISSUER_URI,
